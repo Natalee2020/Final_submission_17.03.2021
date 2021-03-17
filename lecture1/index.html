@@ -1,0 +1,85 @@
+<!-- see also https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Getting_started -->
+
+<!DOCTYPE html> 
+<html>
+
+    <!-- everything that isn't content -->
+    <head>
+        <meta charset="utf-8">
+        <title>Example 1</title>
+
+        <!-- css -->
+        <style>
+            /* uncomment to change default font */
+            /* html {
+                font-family: sans-serif;
+            } */
+
+            img {
+                width: 512px; /* set image width */
+            }
+
+            #caption {
+                display: none; /* start with caption hidden */
+                font-style: italic;
+            }
+            h1 {
+                font-size: 14px;
+            }
+            h2 {
+                font-size: 12px;
+            }
+            .caption_text{
+                text-align: center;
+            }
+        </style>
+    </head>
+
+    <!-- content -->
+    <body>
+        <!-- some text and links -->
+         
+        
+        <h1 class="caption_text">MASTER IN ADVANCED COMPUTATION FOR ARCHITECTURE & DESIGN MaCAD 2020/2021</h1>
+        <h2 class="caption_text">DESIGN STUDIO</h2>
+
+        
+        <!-- an image -->
+        <div class="caption_text">
+            <img id="myImage"
+            alt="studio project 2020"
+            src="Big_Fs.jpg">    
+        </div>
+       
+        <!-- a caption -->
+        <p id="caption">
+            The city today is lacking the community space: the modern architecture has created a number of single-function venues which are often separated far from each other. Even the so-called multifunctional or mixed-use buildings are really mostly the retail centers with an entertainment component and they are usually located far from the residential areas. The only areas fully adaptable to all kinds of public activities are parks but there the climate issues come into play.
+Moscow is located in the sharply continental climate zone, with the annual temperature difference over 50 C, cold winter, hot summer and frequent rains in the midseason. Altogether this calls for the sheltered public space. Another problem, specific to Moscow, is the deficit of the quality public space in the old residential areas in the historical center. There are plenty of world-class museums and theaters, bars and restaurants but there is no space which would combine various public functions in one building and suit all ages and genders.
+
+        </p>
+
+        <!-- javascript -->
+        <script type="application/javascript">
+            // get reference to html elements
+            const img = document.getElementById('myImage')
+
+            // listen to events related to the image
+            img.addEventListener('mouseover', mouseOver, false)
+            img.addEventListener('mouseout', mouseOut, false)
+
+            // define what happens when there is a mouse over event
+            function mouseOver() {
+                document.getElementById('caption').style.display = 'block';
+                img.style.border='2px solid black';
+            }
+
+            // define what happens when there is a mouse out event
+            function mouseOut() {
+                document.getElementById('caption').style.display = 'none';
+                img.style.border='none';
+            }
+        </script>
+
+        <!-- the end -->
+    </body>
+</html>
