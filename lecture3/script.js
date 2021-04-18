@@ -5,13 +5,21 @@ import rhino3dm from 'https://cdn.jsdelivr.net/npm/rhino3dm@0.15.0-beta/rhino3dm
 import { RhinoCompute } from 'https://cdn.jsdelivr.net/npm/compute-rhino3d@0.13.0-beta/compute.rhino3d.module.js'
 
 // reference the definition
-const definitionName = './Flower03nataly.gh'
+const definitionName = './EntryShellNV1.gh'
 
 // listen for slider change events
 const count_slider = document.getElementById( 'count' )
 count_slider.addEventListener( 'input', onSliderChange, false )
+const size_slider = document.getElementById('size')
+size_slider.addEventListener( 'input', onSliderChange, false )
 const radius_slider = document.getElementById( 'radius' )
 radius_slider.addEventListener( 'input', onSliderChange, false )
+const hight_slider = document.getElementById( 'hight' )
+hight_slider.addEventListener( 'input', onSliderChange, false )
+const radius2_slider = document.getElementById( 'radius2' )
+radius2_slider.addEventListener( 'input', onSliderChange, false )
+const fillet_slider = document.getElementById( 'fillet' )
+fillet_slider.addEventListener( 'input', onSliderChange, false )
 
 const downloadButton = document.getElementById("downloadButton")
 downloadButton.onclick = download
@@ -50,18 +58,34 @@ async function compute() {
 
     // get slider values
     let count = document.getElementById('count').valueAsNumber
+    let size = document.getElementById('size').valueAsNumber
     let radius = document.getElementById('radius').valueAsNumber
+    let hight = document.getElementById('hight').valueAsNumber
+    let radius2 = document.getElementById('radius2').valueAsNumber
+    let fillet = document.getElementById('fillet').valueAsNumber
 
     // format data
-    let param1 = new RhinoCompute.Grasshopper.DataTree('RH_IN:size')
-    param1.append([0], [radius])
-    let param2 = new RhinoCompute.Grasshopper.DataTree('RH_IN:count')
-    param2.append([0], [count])
+    let param1 = new RhinoCompute.Grasshopper.DataTree('RH_IN:count')
+    param1.append([0], [count])
+    let param2 = new RhinoCompute.Grasshopper.DataTree('RH_IN:size')
+    param2.append([0], [size])
+    let param3 = new RhinoCompute.Grasshopper.DataTree('RH_IN:radius')
+    param3.append([0], [radius])
+    let param4 = new RhinoCompute.Grasshopper.DataTree('RH_IN:hight')
+    param4.append([0], [hight])
+    let param5 = new RhinoCompute.Grasshopper.DataTree('RH_IN:radius2')
+    param5.append([0], [radius2])
+    let param6 = new RhinoCompute.Grasshopper.DataTree('RH_IN:fillet')
+    param6.append([0], [fillet])
 
     // Add all params to an array
     let trees = []
     trees.push(param1)
     trees.push(param2)
+    trees.push(param3)
+    trees.push(param4)
+    trees.push(param5)
+    trees.push(param6)
 
     // Call RhinoCompute
 
@@ -165,7 +189,7 @@ function init() {
     scene = new THREE.Scene()
     scene.background = new THREE.Color(1, 1, 1)
     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
-    camera.position.z = - 30
+    camera.position.y = - 30
 
     // create the renderer and add it to the html
     renderer = new THREE.WebGLRenderer({ antialias: true })
