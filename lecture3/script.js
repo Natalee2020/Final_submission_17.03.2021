@@ -155,11 +155,7 @@ function onSliderChange() {
 
 function getApiKey() {
     let auth = null
-    auth = env('RHINO_COMPUTE_KEY')
-    if (!auth){
-        auth = localStorage['compute_api_key']
-    }
-    
+    auth = localStorage['compute_api_key']
     if (auth == null) {
         auth = window.prompt('RhinoCompute Server API Key')
         if (auth != null) {
